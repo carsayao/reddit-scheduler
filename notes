@@ -1,3 +1,52 @@
 On https://docs.djangoproject.com/en/3.2/intro/tutorial01/#write-your-first-view
 
 "posts/" == "polls/"
+
+
+Post Scheduler for Reddit
+
+
+Goal:
+Submit info to Django and validate database
+
+
+Steps to submit a post
+Add content:
+    - Title
+    - Post kind:
+        - link
+        - self (text)
+        - image
+            - upload file to imgur
+        - video
+        - videogif
+        
+Classes
+User has Content
+Content is submitted through Posts
+
+
+Tools:
+Frontend: Vue, need node (use nvm)
+Backend: Django
+
+        
+submit post on laterforreddit:
+- When adding content, if you typed a title it won't change when you select a different type of post
+- Uploads images/video to imgur
+- After you have your content on there and select "Save and Continue", you are redirected to permissions screen for app permission (on reddit) if you are signed in. If you're signed out, it takes you to login page to get to permissions.
+= Next screen
+- "Post as" feature
+- Subreddit
+- Strategy:
+    - Post Now "The post will go live immediately"
+    - Next 24 hours "Later will automatically compute the best posting time for the given subreddit, based on your selection"
+    - Next 7 days
+    - Custom Time
+- Override Title "Leave blank to use the default title for this post"
+- Advanced:
+    - Link Flair (drop down that pulls flairs from sub)
+    - Send Replies to Inbox checkbox
+
+Manage Content Page:
+- Posts are made with your chosen default title. Once you create a post, you can then select that post and schedule posts to different subs individually.
