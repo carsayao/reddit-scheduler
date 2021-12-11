@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django_rename_app',
     'poster.apps.PosterConfig',
     'django.contrib.admin',
     'django.contrib.auth',
