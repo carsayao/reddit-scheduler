@@ -6,8 +6,9 @@ On https://docs.djangoproject.com/en/3.2/intro/tutorial01/#write-your-first-view
 Post Scheduler for Reddit
 
 
-Goal:
-Submit info to Django and validate database
+Goals:
+[ ] Submit info to Django and validate database
+[ ] Make api call to reddit
 
 
 Steps to submit a post
