@@ -14,13 +14,14 @@ class Content(models.Model):
     # Unverified accounts, max=150
     default_title = models.CharField(max_length=300)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # link, text, media
     kind = models.CharField(max_length=200)
     creation_date = models.DateTimeField()
     def __str__(self):
         return self.default_title
         # return self.default_title, self.user, self.kind, self.creation_date
     def was_published_recently(self):
-        return self.creation_date >= timezone.now() - datetime.timedelta(days-1)
+        return self.creation_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Post(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
@@ -36,6 +37,7 @@ class Post(models.Model):
 
 class Strategy(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # now, custom
     strat_type = models.CharField(max_length=200)
     strat_date = models.DateTimeField(blank=True)
     def __str__(self):
