@@ -51,3 +51,10 @@ submit post on laterforreddit:
 
 Manage Content Page:
 - Posts are made with your chosen default title. Once you create a post, you can then select that post and schedule posts to different subs individually.
+
+
+>>> u.content_set.create(default_title='test 1', kind='link', creation_date=timezone.now())
+>>> u.content_set.create(default_title='test 2', kind='text', creation_date=timezone.now())
+c = u.content_set.create(default_title='test 3', kind='media', creation_date=timezone.now())
+
+Content.objects.filter(creation_date__year=current_year)

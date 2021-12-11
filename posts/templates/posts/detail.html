@@ -1,0 +1,6 @@
+<h1>{{ user.username }}</h1>
+<ul>
+{% for content in user.content_set.all %}
+    <li>{{ content.default_title }}</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,9 @@
+{% if username_list %}
+    <ul>
+    {% for username in username_list %}
+        <li><a href="{% url 'posts:detail' user.id %}"">{{ user.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users are available.</p>
+{% endif %}
