@@ -1,0 +1,12 @@
+$ from poster.models import User, Content
+$ User.objects.all()
+<QuerySet [<User: beggarscantbeusers>]>
+$ Content.objects.all()
+<QuerySet [<Content: test 1>, <Content: test 2>]>
+
+$ from poster.models import Post, Strategy
+$ Post.objects.all()
+<QuerySet []>
+$ Strategy.objects.all()
+<QuerySet []>
+
