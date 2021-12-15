@@ -2,13 +2,15 @@
 <html>
     <head>
     </head>
+    <body>
 {% if username_list %}
     <ul>
     {% for username in username_list %}
-        <li><a href="{% url 'poster:detail' user.id %}"">{{ user.username }}</a></li>
+        <li><a href="{% url 'poster:content' user.id %}">{{ user.username }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No users are available.</p>
 {% endif %}
+    </body>
 </html>

@@ -8,7 +8,7 @@ class User(models.Model):
     username = models.CharField(max_length=20)
     #timezone
     def __str__(self):
-        return self.username
+        return f'{self.username} id:{self.id}'
 
 class Content(models.Model):
     # Unverified accounts, max=150
@@ -18,7 +18,7 @@ class Content(models.Model):
     kind = models.CharField(max_length=200)
     creation_date = models.DateTimeField()
     def __str__(self):
-        return self.default_title
+        return f'{self.default_title} id:{self.id} u_id:{self.user_id}'
         # return self.default_title, self.user, self.kind, self.creation_date
     def was_published_recently(self):
         return self.creation_date >= timezone.now() - datetime.timedelta(days=1)

@@ -2,11 +2,13 @@
 <html>
     <head>
     </head>
-        <h1>{{ user.username }}</h1>
+    <body>
+        <h1>{{ user.username }} Content</h1>
         <h2>id: {{ user.id}}</h2>
         <ul>
         {% for content in user.content_set.all %}
-            <li><a href="{% url 'poster:detail' user.id %">{{ content.default_title }}</a></li>
+            <li><a href="{% url 'poster:content_detail' user.id content.id %}">{{ content.default_title }}</a></li>
         {% endfor %}
         </ul>
+    </body>
 </html>
