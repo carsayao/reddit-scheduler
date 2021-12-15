@@ -60,3 +60,20 @@ u.content_set.create(default_title='test 2', kind='text', creation_date=timezone
 c = u.content_set.create(default_title='test 3', kind='media', creation_date=timezone.now())
 
 Content.objects.filter(creation_date__year=current_year)
+
+# Select certain User
+u = User.objects.get(pk=1)
+
+
+
+
+urls for laterforreddit.com
+
+# List of content
+dashboard.laterforreddit.com/content/
+
+# Create x-post
+dashboard.laterforreddit.com/content/407379/posts/create/
+
+# Edit Content
+dashboard.laterforreddit.com/content/407379/posts/create/

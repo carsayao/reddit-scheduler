@@ -10,3 +10,19 @@ $ Post.objects.all()
 $ Strategy.objects.all()
 <QuerySet []>
 
+
+polls
+
+# migrate
+
+from polls.models import Choice, Question
+Question.objects.all()
+from django.utils import timezone
+q = Question(question_text="What's up?", pub_date=timezone.now())
+q.save()
+Question.objects.all()
+q.choice_set.create(choice_text='Not much', votes=0)
+q.choice_set.create(choice_text='The sky', votes=0)
+c = q.choice_set.create(choice_text='Just hacking again', votes=0)
+c = q.choice_set.filter(choice_text__startswith='Just hacking')
+c.delete()
