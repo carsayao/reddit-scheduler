@@ -5,6 +5,8 @@ from . import views
 # Set application namespace
 app_name = 'poster'
 urlpatterns = [
+    # the 'name' value as called by the {% url %} template tag
+
     # /poster/
     path('', views.index, name='index'),
     # /poster/1/
