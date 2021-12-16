@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import loader  # Can take out
 from django.urls import reverse
+from django.utils import timezone
 from django.views import generic
 
 from .models import Choice, Question
@@ -33,9 +34,17 @@ class IndexView(generic.ListView):
     # since index.html already uses "latest_question_list".
     context_object_name = 'latest_question_list'
 
+    # We need to amend the get_queryset() method and change it so that it
+    # also checks the date by comparing it with timezone.now()
     def get_queryset(self):
-        """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+        """
+        Return the last five published questions (not including those
+        set to be published in the future).
+        """
+        # return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(
+            pub_date__lte=timezone.now()    # lte: less than/equal
+        ).order_by('-pub_date')[:5]
 
 
 # def detail(request, question_id):
