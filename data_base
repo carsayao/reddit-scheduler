@@ -1,14 +1,14 @@
-$ from poster.models import User, Content
-$ User.objects.all()
-<QuerySet [<User: beggarscantbeusers>]>
-$ Content.objects.all()
-<QuerySet [<Content: test 1>, <Content: test 2>]>
+from poster.models import User, Content
+User.objects.all()
+  <QuerySet [<User: beggarscantbeusers>]>
+Content.objects.all()
+  <QuerySet [<Content: test 1>, <Content: test 2>]>
 
-$ from poster.models import Post, Strategy
-$ Post.objects.all()
-<QuerySet []>
-$ Strategy.objects.all()
-<QuerySet []>
+from poster.models import Post, Strategy
+Post.objects.all()
+  <QuerySet []>
+Strategy.objects.all()
+  <QuerySet []>
 
 
 polls
@@ -26,3 +26,5 @@ q.choice_set.create(choice_text='The sky', votes=0)
 c = q.choice_set.create(choice_text='Just hacking again', votes=0)
 c = q.choice_set.filter(choice_text__startswith='Just hacking')
 c.delete()
+
+Vote for "Not much" 3 times
