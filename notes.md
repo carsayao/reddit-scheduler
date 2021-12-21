@@ -20,6 +20,8 @@ https://docs.djangoproject.com/en/3.2/intro/tutorial05/#when-testing-more-is-bet
 
 ## Tools
 
+![Django MVT control flow](img/django-mvt-based-control-flow.png)
+
 <details>
 <summary>Tools</summary>
 
