@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('send_replies', models.BooleanField()),
                 ('flair', models.CharField(blank=True, max_length=200)),
                 ('reddit_link', models.URLField(blank=True)),
-                ('content', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poster.content')),
+                ('content', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scheduler.content')),
             ],
         ),
         migrations.CreateModel(
@@ -47,12 +47,12 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('strat_type', models.CharField(max_length=200)),
                 ('strat_date', models.DateTimeField(blank=True)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poster.post')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scheduler.post')),
             ],
         ),
         migrations.AddField(
             model_name='content',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poster.user'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scheduler.user'),
         ),
     ]

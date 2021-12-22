@@ -6,7 +6,7 @@
         <h2>id: {{ user.id}}</h2>
         <ul>
         {% for content in user.content_set.all %}
-            <li><a href="{% url 'poster:detail' user.id %">{{ content.default_title }}</a></li>
+            <li><a href="{% url 'scheduler:detail' user.id %">{{ content.default_title }}</a></li>
         {% endfor %}
         </ul>
 </html>

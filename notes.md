@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/3.2/intro/tutorial05/#when-testing-more-is-bet
 
 ## Quick Notes
 
-`"poster/" == "polls/"`
+For the tutorial:
+
+`"scheduler/" == "polls/"`
 
 ***
 
@@ -154,10 +156,10 @@ Currently on database file
 
 When changing systems, make sure to `python3 manage.py migrate` after pulling your changes.
 
-### Add to `poster`
+### Add to `scheduler`
 
 ```
-from poster.models import User, Content
+from scheduler.models import User, Content
 from django.utils import timezone
 u = User(username="beggarscantbeusers")
 u.save()
@@ -169,7 +171,7 @@ u.content_set.create(default_title='test 1', kind='link', creation_date=timezone
 u.content_set.create(default_title='test 2', kind='text', creation_date=timezone.now())
 c = u.content_set.create(default_title='test 3', kind='media', creation_date=timezone.now())
 
-from poster.models import Post, Strategy
+from scheduler.models import Post, Strategy
 Post.objects.all()
   <QuerySet []>
 Strategy.objects.all()
