@@ -32,6 +32,23 @@ For the tutorial:
 
 </details>
 
+### Django
+
+Excellent writeup structure of django  
+https://djangobook.com/mdj2-django-structure/
+
+Where do we put a particular function or class?
+
+Does the function/class return a response?
+  - Yes—it's a view. Put it in the views module (views.py).
+  - No—it's not a view, it's app logic. Put it somewhere else (somewhere_else.py).
+
+When you have code that isn’t a view, you create a new Python module (.py file) inside your app and put related functions and classes inside the file.
+
+#### Resources
+
+Authentication  
+https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
 ## Goals:
 
@@ -54,6 +71,8 @@ Add content:
         - upload file to imgur
     - video
     - videogif
+
+API Requests to reddit made in the View
 
 </details>
         
@@ -115,6 +134,26 @@ Add content:
 
 <details>
 <summary>Navigation</summary>
+
+```
+# homepage shows contents with cross posts and existing schedules
+/scheduler/
+
+# new content
+/scheduler/new/
+
+# schedule post(s)
+/scheduler/<content_id>/post/cross/
+
+# edit content (may affect scheduled posts)
+/scheduler/<content_id>/edit/
+
+# content page with list of scheduled and upcoming posts
+/scheduler/<content_id>/
+
+# edit upcoming post
+/scheduler/<content_id>/<post_id>/edit/
+```
 
 ```
 # List of content
@@ -200,3 +239,26 @@ Vote for "Not much" 3 times
 ```
 
 </details>
+
+## Scratch
+
+Process data in the View to save to Model
+
+Where do I enter a post's schedule? Who keeps track of it? Where is the asynch task initiated and where does it finally post to reddit when the time comes?
+
+Celery  
+https://docs.celeryproject.org/en/stable/index.html
+
+rq  
+https://github.com/rq/rq
+
+django q  
+https://github.com/Koed00/django-q  
+https://mattsegal.dev/simple-scheduled-tasks.html
+
+discussion django scheduling  
+https://www.reddit.com/r/django/comments/rz9tmr/scheduling_tasks/
+https://www.reddit.com/r/Python/comments/97b7uw/does_anyone_have_experience_moving_from_celery_to/  
+
+examples how to use reddit api with django  
+https://github.com/MattSegal/reddit-feed
