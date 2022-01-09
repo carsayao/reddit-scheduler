@@ -21,7 +21,6 @@ def index(request):
     # Shortcut for common load, fill context, return HttpResponse object
     # w/result of the rendered template.
     username_list = User.objects.all()
-    print(username_list)
     # The context is a dictionary mapping template variable names to
     # Python objects.
     context = {
@@ -48,9 +47,10 @@ def user(request, user_id):
     return render(request, 'scheduler/content.html', {'user': user})
 
 def content(request, user_id):
+    # print(f"USER ID: {user_id}")
     user = get_object_or_404(User, pk=user_id)
-    print(f"USER ID: {user_id}")
-    print(f"USER CONTENT: {user.content_set.all()}")
+    # print(f"USER ID: {user_id}")
+    # print(f"USER CONTENT: {user.content_set.all()}")
     return render(request, 'scheduler/content.html', {'user': user})
 
 def content_detail(request, content_id, user_id):
