@@ -55,6 +55,9 @@ https://docs.djangoproject.com/en/3.2/topics/auth/default/
 - [ ] Submit info to Django and validate database
 - [ ] Make api call to reddit
 
+## TODO:
+
+- [ ] Change model. Move `user` from `Content` to `Post`.
 
 ## Steps to submit a post
 
@@ -262,3 +265,4 @@ https://www.reddit.com/r/Python/comments/97b7uw/does_anyone_have_experience_movi
 
 examples how to use reddit api with django  
 https://github.com/MattSegal/reddit-feed
+https://github.com/gruiz90/reddit-rest-api

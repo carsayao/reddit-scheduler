@@ -3,10 +3,11 @@
     <head>
     </head>
         <h1>{{ user.username }}</h1>
-        <h2>id: {{ user.id}}</h2>
+        <h2>{{ object.default_title }}</h2>
+        <!-- <h2>id: {{ user.id}}</h2> -->
         <ul>
-        {% for content in user.content_set.all %}
-            <li><a href="{% url 'scheduler:detail' user.id %">{{ content.default_title }}</a></li>
-        {% endfor %}
+        {# {% for content in user.list %} #}
+            <!-- <li><a href="{% url 'scheduler:detail' user.id %">{{ content.default_title }}</a></li> -->
+        {#{% endfor %} #}
         </ul>
 </html>
