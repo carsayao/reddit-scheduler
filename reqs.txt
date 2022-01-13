@@ -1,3 +1,5 @@
 Django==3.2.10
 djangorestframework
 requests
+django-encrypted-model-fields
+praw

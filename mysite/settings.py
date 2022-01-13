@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'encrypted_model_fields',
     'scheduler.apps.SchedulerConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
