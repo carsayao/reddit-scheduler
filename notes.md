@@ -196,28 +196,45 @@ As long as your tests are sensibly arranged, they won’t become unmanageable. G
 Currently on database file
 </summary>
 
+How to make edits to model.
+https://pytutorial.com/how-to-solve-you-are-trying-to-add-a-non-nullable-field-to-without-a-default
+
 When changing systems, make sure to `python3 manage.py migrate` after pulling your changes.
 
 ### Add to `scheduler`
 
 ```
-from scheduler.models import User, Content
+from scheduler.models import User, Content, Post, Strategy
 from django.utils import timezone
+from datetime import timedelta
+
 u = User(username="beggarscantbeusers")
 u.save()
 
 User.objects.all()
-  <QuerySet [<User: beggarscantbeusers>]>
+  <QuerySet [<User: beggarscantbeusers, id:2>]>
 
-u.content_set.create(default_title='test 1', kind='link', creation_date=timezone.now())
-u.content_set.create(default_title='test 2', kind='text', creation_date=timezone.now())
-c = u.content_set.create(default_title='test 3', kind='media', creation_date=timezone.now())
+u = User.objects.get(pk=2)
+c = Content(default_title='test 1', kind='link', creation_date=timezone.now())
+c.save()
+p = Post(content=c, override_title="post 1", user=u, subreddit="sub1", strat="now", send_replies=False, flair="flair1", reddit_link="this.is/link1")
+p.save()
+c = Content(default_title='test 2', kind='text', creation_date=timezone.now())
+c.save()
+p = Post(content=c, override_title="post 2", user=u, subreddit="sub2", strat="now", send_replies=True, flair="", reddit_link="this.is/link2")
+p.save()
+p = Post(content=c, override_title="post 3", user=u, subreddit="sub3", strat="custom", send_replies=True, flair="", reddit_link="this.is/link3")
+p.save()
+c = Content(default_title='test 3', kind='media', creation_date=timezone.now())
+c.save()
 
-from scheduler.models import Post, Strategy
 Post.objects.all()
-  <QuerySet []>
+  <QuerySet [<Post: post 1, id:1>, <Post: post 2, id:2>, <Post: post 3, id:3>]>
 Strategy.objects.all()
   <QuerySet []>
+
+s = Strategy(post=Post.objects.get(pk=3), strat_type="custom", strat_date=timezone.now()+timedelta(hours=24))
+s.save()
 
 # Get by filter
 Content.objects.filter(creation_date__year=current_year)

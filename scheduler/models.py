@@ -14,7 +14,7 @@ class User(models.Model):
 class Content(models.Model):
     # Unverified accounts, max=150
     default_title = models.CharField(max_length=300)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     # link, text, media
     kind = models.CharField(max_length=200)
     creation_date = models.DateTimeField()
@@ -27,6 +27,7 @@ class Content(models.Model):
 class Post(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
     override_title = models.CharField(max_length=300, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     subreddit = models.CharField(max_length=200)
     strat = models.CharField(max_length=200)
     send_replies = models.BooleanField(null=False)
