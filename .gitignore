@@ -2,6 +2,7 @@ env/
 db.sqlite3
 .vscode/
 *.sw*
+pw.txt
 
 # Python
 __pycache__/
