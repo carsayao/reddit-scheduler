@@ -9,6 +9,7 @@ app_name = 'scheduler'
 urlpatterns = [
 # /scheduler/
     path('', views.IndexView.as_view(), name='index'),
+    # path('content/', views.ContentView.as_view(), name='content'),
 # /scheduler/new/
     path('new/', views.NewContent.as_view(), name='new_content'),
 # /scheduler/3/

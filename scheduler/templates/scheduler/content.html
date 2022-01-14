@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
-    <body>
-        <!-- <h1>{{ user_list.username }} Content</h1> -->
-        <!-- <h2>id: {{ user_list.id}}</h2> -->
-        <ul>
-        {% for content in content_list %}
-            <li><a href="{% url 'scheduler:content_detail' user.id content.id %}">{{ content.default_title }}</a></li>
-        {% endfor %}
-        {# {% user_list %} #}
-        </ul>
-    </body>
-</html>
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+
+{% if content_list %}
+    <ul>
+    {% for content in content_list %}
+        <li><a href="{% url 'scheduler:content_detail' content.id %}">{{ content.default_title }} {{ content.user }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users are available.</p>
+{% endif %}
+
+{% endblock %}

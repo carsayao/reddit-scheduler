@@ -284,3 +284,15 @@ https://www.reddit.com/r/Python/comments/97b7uw/does_anyone_have_experience_movi
 examples how to use reddit api with django  
 https://github.com/MattSegal/reddit-feed
 https://github.com/gruiz90/reddit-rest-api
+
+```
+# Links in django
+<a class="nav-link" href="{% url 'namespace:name' 'param' %}">Stuff</a>
+```
+
+```
+Placeholder for a login page
+{# <form action="{% url 'scheduler:content' %}">
+    <button type="button" class="btn btn-primary">Log in</button>
+</form> #}
+```
