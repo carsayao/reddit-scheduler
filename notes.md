@@ -57,7 +57,8 @@ https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
 ## TODO:
 
-- [ ] Change model. Move `user` from `Content` to `Post`.
+- [x] Change model. Move `user` from `Content` to `Post`.
+- [ ] Create login/registration page.
 
 ## Steps to submit a post
 
@@ -133,10 +134,11 @@ API Requests to reddit made in the View
 
 </details>
 
-### Urls
+## Urls
 
-<details>
-<summary>Navigation</summary>
+<!-- <details> -->
+<!-- <summary>Navigation</summary> -->
+Navigation
 
 ```
 # homepage shows contents with cross posts and existing schedules
@@ -169,8 +171,7 @@ dashboard.app.com/content/407379/posts/create/
 dashboard.app.com/content/407379/posts/create/
 ```
 
-</details>
-
+<!-- </details> -->
 
 
 ## Testing:

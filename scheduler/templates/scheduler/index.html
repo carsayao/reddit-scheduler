@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
-    <body>
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+
 {% if content_list %}
     <ul>
     {% for content in content_list %}
@@ -12,5 +11,5 @@
 {% else %}
     <p>No users are available.</p>
 {% endif %}
-    </body>
-</html>
+
+{% endblock %}
