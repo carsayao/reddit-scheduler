@@ -5,4 +5,4 @@ from .models import Content
 class ContentForm(ModelForm):
     class Meta:
         model = Content
-        fields = ('default_title', 'kind')
+        fields = ['default_title', 'kind']

@@ -5,7 +5,7 @@
 {% if content_list %}
     <ul>
     {% for content in content_list %}
-        <li><a href="{% url 'scheduler:content_detail' content.id %}">{{ content.default_title }} {{ content.user }}</a></li>
+        <li><a href="{% url 'scheduler:content-detail' content.id %}">{{ content.default_title }} {{ content.user }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

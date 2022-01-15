@@ -197,8 +197,34 @@ As long as your tests are sensibly arranged, they won’t become unmanageable. G
 Currently on database file
 </summary>
 
-How to make edits to model.
+How to make edits to model.  
 https://pytutorial.com/how-to-solve-you-are-trying-to-add-a-non-nullable-field-to-without-a-default
+
+Steps I took to edit model:
+
+- delete offending fields: creation_date
+  - makemigrations
+  - migrate
+- add new fields to content
+  - makemigrations
+    ```
+    You are trying to add the field 'created_at' with 'auto_now_add=True' to content without a default; the database needs something to populate existing rows.
+    
+     1) Provide a one-off default now (will be set on all existing rows)
+     2) Quit, and let me add a default in models.py
+    Select an option: 1
+    Please enter the default value now, as valid Python
+    You can accept the default 'timezone.now' by pressing 'Enter' or you can provide another value.
+    The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+    Type 'exit' to exit this prompt
+    [default: timezone.now] >>> 
+    ```
+  - migrate
+- remove Strategy, add remaining fields to Post. changed optional datetime fields to nullable/blankable 
+  - makemigrations
+  - migrate
+
+Can delete through `shell`: `User.objects.all().delete()`
 
 When changing systems, make sure to `python3 manage.py migrate` after pulling your changes.
 

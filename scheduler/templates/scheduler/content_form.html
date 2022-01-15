@@ -1,0 +1,11 @@
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+
+    <h1>New Content</h1>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create" class="btn btn-primary">
+    </form>
+    
+{% endblock %}

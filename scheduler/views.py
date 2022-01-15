@@ -4,6 +4,7 @@ from django.http.response import HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 
@@ -16,7 +17,7 @@ class IndexView(ListView):
     def get_queryset(self):
         return Content.objects.all()
 
-class NewContent(DetailView):
+class ContentCreateView(CreateView):
     model = Content
     form_class = ContentForm
 
