@@ -242,17 +242,17 @@ User.objects.all()
   <QuerySet [<User: beggarscantbeusers, id:2>]>
 
 u = User.objects.get(pk=2)
-c = Content(default_title='test 1', kind='link', creation_date=timezone.now())
+c = Content(default_title='test 1', kind='link', created_at=timezone.now())
 c.save()
 p = Post(content=c, override_title="post 1", user=u, subreddit="sub1", strat="now", send_replies=False, flair="flair1", reddit_link="this.is/link1")
 p.save()
-c = Content(default_title='test 2', kind='text', creation_date=timezone.now())
+c = Content(default_title='test 2', kind='text', created_at=timezone.now())
 c.save()
 p = Post(content=c, override_title="post 2", user=u, subreddit="sub2", strat="now", send_replies=True, flair="", reddit_link="this.is/link2")
 p.save()
 p = Post(content=c, override_title="post 3", user=u, subreddit="sub3", strat="custom", send_replies=True, flair="", reddit_link="this.is/link3")
 p.save()
-c = Content(default_title='test 3', kind='media', creation_date=timezone.now())
+c = Content(default_title='test 3', kind='media', created_at=timezone.now())
 c.save()
 
 Post.objects.all()
@@ -264,7 +264,7 @@ s = Strategy(post=Post.objects.get(pk=3), strat_type="custom", strat_date=timezo
 s.save()
 
 # Get by filter
-Content.objects.filter(creation_date__year=current_year)
+Content.objects.filter(created_at__year=current_year)
 
 # Select certain User
 u = User.objects.get(pk=1)
