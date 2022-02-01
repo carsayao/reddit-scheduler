@@ -231,7 +231,7 @@ When changing systems, make sure to `python3 manage.py migrate` after pulling yo
 ### Add to `scheduler`
 
 ```
-from scheduler.models import User, Content, Post, Strategy
+from scheduler.models import User, Content, Post
 from django.utils import timezone
 from datetime import timedelta
 

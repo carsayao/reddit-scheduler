@@ -43,13 +43,13 @@ class Post(models.Model):
     strat = models.CharField(max_length=200)
     send_replies = models.BooleanField(null=False)
     flair = models.CharField(max_length=200, blank=True)
+    reddit_link = models.URLField(blank=True)
     comment = models.CharField(max_length=9999, blank=True)
     nsfw = models.BooleanField(null=False, default=False)
 
     strategy = models.CharField(max_length=6, choices=POST_STRATEGY, default='CUSTOM')
     scheduled_for = models.DateTimeField(blank=True, null=True)
     posted_at = models.DateTimeField(blank=True, null=True)
-    reddit_link = models.URLField(blank=True)
 
     def __str__(self):
         return self.override_title
