@@ -1,0 +1,12 @@
+{% block content %}
+
+{% if post_list %}
+    <ul>
+    {% for post in post_list %}
+        <li><a href="{% url 'scheduler:post-detail' post.id %}"</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts are available.</p>
+
+{% endblock %}
