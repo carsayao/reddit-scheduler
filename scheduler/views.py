@@ -39,6 +39,8 @@ class ContentDetailView(DetailView):
         context['post_list'] = Post.objects.all()
         print(context)
         return context
+        # Maybe try
+        # Content.objects.get(id=<int>).post_set.all()
 
 class PostListView(ListView):
     template_name = 'scheduler/content_posts.html'
