@@ -8,5 +8,14 @@
 <h3>Creation date: {{ content.created_at }}</h3>
 <h3>Last Updated date: {{ content.updated_at }}</h3>
 <h2>Posts:</h2>
+{% if post_list %}
+    <ul>
+    {% for post in post_list %}
+        <li><a href="{% url 'scheduler:post-detail' content.id post.id %}"</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts are available.</p>
+{% endif %}
 
 {% endblock %}

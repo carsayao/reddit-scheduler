@@ -31,9 +31,14 @@ class ContentCreateView(CreateView):
 class ContentDetailView(DetailView):
     model = Content
     template_name = 'scheduler/content_detail.html'
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return context
+    # https://docs.djangoproject.com/en/4.0/topics/class-based-views/generic-display/#adding-extra-context
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the posts
+        context['post_list'] = Post.objects.all()
+        print(context)
+        return context
 
 class PostListView(ListView):
     template_name = 'scheduler/content_posts.html'
@@ -41,3 +46,6 @@ class PostListView(ListView):
     def get_queryset(self):
         self.content = get_object_or_404(Content, name=self.kwargs['content'])
         return Post.objects.select_relate().filter(content=self.content)
+
+class PostDetailView(DetailView):
+    model = Post

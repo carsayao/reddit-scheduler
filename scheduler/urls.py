@@ -14,6 +14,6 @@ urlpatterns = [
     path('new/', views.ContentCreateView.as_view(), name='content-add'),
 # /scheduler/3/
     path('<int:pk>/', views.ContentDetailView.as_view(), name='content-detail'),
-    path('<int:content>/<int:post>/', views.PostListView.as_view(), name='post-list'),
+    # path('<int:content>/<int:post>/', views.PostListView.as_view(), name='post-list'),
     path('<int:content>/<int:post>/', views.PostDetailView.as_view(), name='post-detail'),
 ]
