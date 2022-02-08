@@ -1,9 +1,11 @@
 # My Notes
 
-<details>
-<summary>Quick Notes</summary>
+# Table of Contents
 
-## Current
+1. [Current](#current)
+1. [Database](#database)
+
+# Current <a name="current"></a>
 
 https://docs.djangoproject.com/en/3.2/intro/tutorial05/#when-testing-more-is-better
 
@@ -15,22 +17,14 @@ For the tutorial:
 
 ***
 
-</details>
-
 # Post Scheduler for Reddit
-
 
 ## Tools
 
 ![Django MVT control flow](img/django-mvt-based-control-flow.png)
 
-<details>
-<summary>Tools</summary>
-
 - Frontend: Vue, need node (use nvm)
 - Backend: Django
-
-</details>
 
 ### Django
 
@@ -62,9 +56,6 @@ https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
 ## Steps to submit a post
 
-<details>
-<summary>Steps</summary>
-
 Add content:
 
 - Title
@@ -78,44 +69,21 @@ Add content:
 
 API Requests to reddit made in the View
 
-</details>
-        
-<details>
-<summary>Hierarchy</summary>
+### Hierarchy
 
 1. User has Content
 2. Content is submitted through Posts
 
-</details>
-
-
-
 ## Manage Content Page:
-
-<details>
 
 - Posts are made with your chosen default title. Once you create a post, you can then select that post and schedule posts to different subs individually.
 
-</details>
-
-
 ## Steps to submit post on existing apps:
-
-<details>
-<summary>Steps</summary>
-
-<details>
-<summary>First Screen</summary>
 
 1. **First Screen**
     - When adding content, if you typed a title it won't change when you select a different type of post
     - Uploads images/video to imgur
     - After you have your content on there and select "Save and Continue", you are redirected to permissions screen for app permission (on reddit) if you are signed in. If you're signed out, it takes you to login page to get to permissions.
-
-</details>
-
-<details>
-<summary>Next Screen</summary>
 
 2. **Next screen**
     - "Post as" feature
@@ -129,10 +97,6 @@ API Requests to reddit made in the View
     - Advanced (dropdown):
         - Link Flair (drop down that pulls flairs from sub)
         - Send Replies to Inbox checkbox
-
-</details>
-
-</details>
 
 ## Urls
 
@@ -176,8 +140,6 @@ dashboard.app.com/content/407379/posts/create/
 
 ## Testing:
 
-<details>
-
 *[When testing, more is better](https://docs.djangoproject.com/en/3.2/intro/tutorial05/#when-testing-more-is-better)*
 
 As long as your tests are sensibly arranged, they won’t become unmanageable. Good rules-of-thumb include having:
@@ -185,17 +147,10 @@ As long as your tests are sensibly arranged, they won’t become unmanageable. G
 - a separate test method for each set of conditions you want to test
 - test method names that describe their function
 
-</details>
 
+## Database <a name="database"></a>
 
-
-## Database
-
-
-<details>
-<summary>
-Currently on database file
-</summary>
+### Currently on database file
 
 How to make edits to model.  
 https://pytutorial.com/how-to-solve-you-are-trying-to-add-a-non-nullable-field-to-without-a-default
@@ -284,8 +239,6 @@ q.choice_set.create(choice_text='The sky', votes=0)
 
 Vote for "Not much" 3 times
 ```
-
-</details>
 
 ## Scratch
 
