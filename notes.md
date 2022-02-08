@@ -1,15 +1,33 @@
 # My Notes
 
-# Table of Contents
+## Table of Contents
 
 1. [Current](#current)
+    1. [Quick Notes](#quicknotes)
+1. [Post Scheduler for Reddit](#post_scheduler)
+    1. [Tools](#tools)
+        1. [Django](#django)
+        1. [Resources](#resources)
+    1. [Goals](#goals)
+    1. [TODO](#todo)
+    1. [Steps to Submit a Post](#submit_a_post)
+        * [Hierarchy](#hierarchy)
+    1. [Manage Content Page](#manage_content_page)
+    1. [Steps to Submit a Post on Existing Apps](#existing_submit_post)
+    1. [Navigation Urls](#urls)
+    1. [Testing](#testing)
 1. [Database](#database)
+    1. [Currently on Database](#currently_on_database)
+    1. [Add to `scheduler`](#add_to_scheduler)
+    1. [Add to `polls`](#add_to_polls)
+1. [Scratch](#scratch)
 
 # Current <a name="current"></a>
 
 https://docs.djangoproject.com/en/3.2/intro/tutorial05/#when-testing-more-is-better
 
-## Quick Notes
+## Quick Notes <a name="quicknotes"></a>
+ <a name=""></a>
 
 For the tutorial:
 
@@ -17,16 +35,16 @@ For the tutorial:
 
 ***
 
-# Post Scheduler for Reddit
+# Post Scheduler for Reddit <a name="post_scheduler"></a>
 
-## Tools
+## Tools <a name="tools"></a>
 
 ![Django MVT control flow](img/django-mvt-based-control-flow.png)
 
 - Frontend: Vue, need node (use nvm)
 - Backend: Django
 
-### Django
+### Django <a name="django"></a>
 
 Excellent writeup structure of django  
 https://djangobook.com/mdj2-django-structure/
@@ -39,22 +57,22 @@ Does the function/class return a response?
 
 When you have code that isn’t a view, you create a new Python module (.py file) inside your app and put related functions and classes inside the file.
 
-#### Resources
+### Resources <a name="resources"></a>
 
 Authentication  
 https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
-## Goals:
+## Goals: <a name="goals"></a>
 
 - [ ] Submit info to Django and validate database
 - [ ] Make api call to reddit
 
-## TODO:
+## TODO: <a name="todo"></a>
 
 - [x] Change model. Move `user` from `Content` to `Post`.
 - [ ] Create login/registration page.
 
-## Steps to submit a post
+## Steps to submit a post <a name="submit_a_post"></a>
 
 Add content:
 
@@ -69,16 +87,16 @@ Add content:
 
 API Requests to reddit made in the View
 
-### Hierarchy
+### Hierarchy <a name="hierarchy"></a>
 
 1. User has Content
 2. Content is submitted through Posts
 
-## Manage Content Page:
+## Manage Content Page: <a name="manage_content_page"></a>
 
 - Posts are made with your chosen default title. Once you create a post, you can then select that post and schedule posts to different subs individually.
 
-## Steps to submit post on existing apps:
+## Steps to submit post on existing apps: <a name="existing_submit_post"></a>
 
 1. **First Screen**
     - When adding content, if you typed a title it won't change when you select a different type of post
@@ -98,7 +116,7 @@ API Requests to reddit made in the View
         - Link Flair (drop down that pulls flairs from sub)
         - Send Replies to Inbox checkbox
 
-## Urls
+## Navigation Urls <a name="urls"></a>
 
 <!-- <details> -->
 <!-- <summary>Navigation</summary> -->
@@ -138,7 +156,7 @@ dashboard.app.com/content/407379/posts/create/
 <!-- </details> -->
 
 
-## Testing:
+## Testing: <a name="testing"></a>
 
 *[When testing, more is better](https://docs.djangoproject.com/en/3.2/intro/tutorial05/#when-testing-more-is-better)*
 
@@ -148,9 +166,9 @@ As long as your tests are sensibly arranged, they won’t become unmanageable. G
 - test method names that describe their function
 
 
-## Database <a name="database"></a>
+# Database <a name="database"></a>
 
-### Currently on database file
+## Currently on database file <a name="currently_on_database"></a>
 
 How to make edits to model.  
 https://pytutorial.com/how-to-solve-you-are-trying-to-add-a-non-nullable-field-to-without-a-default
@@ -183,7 +201,7 @@ Can delete through `shell`: `User.objects.all().delete()`
 
 When changing systems, make sure to `python3 manage.py migrate` after pulling your changes.
 
-### Add to `scheduler`
+## Add to `scheduler` <a name="add_to_scheduler"></a>
 
 ```
 from scheduler.models import User, Content, Post
@@ -225,7 +243,7 @@ Content.objects.filter(created_at__year=current_year)
 u = User.objects.get(pk=1)
 ```
 
-### Add to `polls`
+## Add to `polls` <a name="add_to_polls"></a>
 
 ```
 from polls.models import Choice, Question
@@ -240,7 +258,7 @@ q.choice_set.create(choice_text='The sky', votes=0)
 Vote for "Not much" 3 times
 ```
 
-## Scratch
+# Scratch <a name="scratch"></a>
 
 Process data in the View to save to Model
 
