@@ -92,6 +92,21 @@ API Requests to reddit made in the View
 1. User has Content
 2. Content is submitted through Posts
 
+Visually, if using database input, looks like this:
+
+```
+u 'beggarscantbeusers'
+| 
+| c 'test 1'
+| | p 'post 1'
+| 
+| c 'test 2'
+| | p 'post 2'
+| | p 'post 3'
+| 
+| c 'test 3'
+```
+
 ## Manage Content Page: <a name="manage_content_page"></a>
 
 - Posts are made with your chosen default title. Once you create a post, you can then select that post and schedule posts to different subs individually.
