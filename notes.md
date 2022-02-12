@@ -95,16 +95,16 @@ API Requests to reddit made in the View
 Visually, if using database input, looks like this:
 
 ```
-u 'beggarscantbeusers'
+u 'beggarscantbeusers' id=3
 | 
-| c 'test 1'
-| | p 'post 1'
+| c 'test 1' id=1s
+| | p 'post 1' id=1
 | 
-| c 'test 2'
-| | p 'post 2'
-| | p 'post 3'
+| c 'test 2' id=2
+| | p 'post 2' id=2
+| | p 'post 3' id=3
 | 
-| c 'test 3'
+| c 'test 3' id=3
 ```
 
 ## Manage Content Page: <a name="manage_content_page"></a>
@@ -274,6 +274,22 @@ Vote for "Not much" 3 times
 ```
 
 # Scratch <a name="scratch"></a>
+
+Printing context from within ContentDetailView.
+
+```
+{
+    'object': <Content: test 1>, 
+    'content': <Content: test 1>, 
+    'view': <scheduler.views.ContentDetailView object at 0x7fa4e7742ac0>,
+    'post_list':
+        <QuerySet [
+            <Post: post 1>, 
+            <Post: post 2>, 
+            <Post: post 3>
+        ]>
+}
+```
 
 Process data in the View to save to Model
 
