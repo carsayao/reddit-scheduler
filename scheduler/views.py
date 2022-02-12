@@ -37,7 +37,25 @@ class ContentDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the posts
         context['post_list'] = Post.objects.all()
-        print(context)
+        print("[!] DetailView", DetailView)
+        print("[!] context", context)
+        print("[!] context['content']", context['content'])
+        print("[!] context['content'].id", context['content'].id)
+        # print("", Post.objects.filter())
+        print("[!] self", self)
+        print("[!] kwargs", kwargs)
+        # Doesn't work
+        # print("[!] kwargs['pk']", kwargs['pk'])
+        # print("[!] **kwargs", **kwargs)
+        print("[!] self.kwargs", self.kwargs)
+        # Get pk of current content
+        print("[!] self.kwargs['pk']", self.kwargs['pk'])
+        print("[!] Post.objects", Post.objects.select_related('content').get(pk=self.kwargs['pk']))
+        print("[!] Post.objects", Post.objects.select_related('content').get(pk=2))
+        print("[!] Post.objects.all()", Post.objects.all())
+        print("[!] Post.objects.select_related('content').filter(content=2)", Post.objects.select_related('content').filter(content=2))
+        # Get posts by content
+        print("[!] Post.objects.select_related('content').filter(content=self.kwargs['pk'])", Post.objects.select_related('content').filter(content=self.kwargs['pk']))
         return context
         # Maybe try
         # Content.objects.get(id=<int>).post_set.all()
