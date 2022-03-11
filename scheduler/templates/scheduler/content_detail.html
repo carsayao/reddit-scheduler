@@ -11,7 +11,7 @@
 {% if post_list %}
     <ul>
     {% for post in post_list %}
-        <li><a href="{% url 'scheduler:post-detail' content.id post.id %}"</li>
+        <li><a href="{% url 'scheduler:post-detail' content.id post.id %}">{{ post.override_title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

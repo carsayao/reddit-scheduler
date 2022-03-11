@@ -36,26 +36,55 @@ class ContentDetailView(DetailView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the posts
-        context['post_list'] = Post.objects.all()
-        print("[!] DetailView", DetailView)
-        print("[!] context", context)
-        print("[!] context['content']", context['content'])
-        print("[!] context['content'].id", context['content'].id)
-        # print("", Post.objects.filter())
-        print("[!] self", self)
-        print("[!] kwargs", kwargs)
-        # Doesn't work
-        # print("[!] kwargs['pk']", kwargs['pk'])
-        # print("[!] **kwargs", **kwargs)
-        print("[!] self.kwargs", self.kwargs)
-        # Get pk of current content
-        print("[!] self.kwargs['pk']", self.kwargs['pk'])
-        print("[!] Post.objects", Post.objects.select_related('content').get(pk=self.kwargs['pk']))
-        print("[!] Post.objects", Post.objects.select_related('content').get(pk=2))
-        print("[!] Post.objects.all()", Post.objects.all())
-        print("[!] Post.objects.select_related('content').filter(content=2)", Post.objects.select_related('content').filter(content=2))
+        context['post_list'] = Post.objects.select_related('content').filter(content=self.kwargs['pk'])
+
+        print()
+
+        # print("[!] DetailView", DetailView)
+        # <class 'django.views.generic.detail.DetailView'>
+
+        # print("[!] context", context)
+        # {'object': <Content: test 1>, 'content': <Content: test 1>, 'view': <scheduler.views.ContentDetailView object at 0x7f317c5d3ca0>, 'post_list': <QuerySet [<Post: post 1>, <Post: post 2>, <Post: post 3>]>}
+
+        print("[!] context['post_list']", context['post_list'])
+
+        # print("[!] context['content']", context['content'])
+        # test 1
+
+        # print("[!] context['content'].id", context['content'].id)
+        # 1
+
+        # print("[!] self", self)
+        # <scheduler.views.ContentDetailView object at 0x7f317c5d3ca0>
+
+        # print("[!] kwargs", kwargs)
+        # {'object': <Content: test 1>}
+
+        # print("[!] kwargs['pk']", kwargs['pk'])   # Doesn't work
+        # print("[!] **kwargs", **kwargs)   # Doesn't work
+
+        # print("[!] self.kwargs", self.kwargs)
+        # {'pk': 1}
+
+        # print("[!] self.kwargs['pk']", self.kwargs['pk'])   # Get pk of current content
+        # 1
+        
+        # print("[!] Post.objects", Post.objects.select_related('content').get(pk=self.kwargs['pk']))
+        # post 1
+
+        # print("[!] Post.objects", Post.objects.select_related('content').get(pk=2))
+        # post 2
+
+        # print("[!] Post.objects.all()", Post.objects.all())
+        # <QuerySet [<Post: post 1>, <Post: post 2>, <Post: post 3>]>
+
+        # print("[!] Post.objects.select_related('content').filter(content=2)", Post.objects.select_related('content').filter(content=2))
+        # <QuerySet [<Post: post 2>, <Post: post 3>]>
+
         # Get posts by content
         print("[!] Post.objects.select_related('content').filter(content=self.kwargs['pk'])", Post.objects.select_related('content').filter(content=self.kwargs['pk']))
+        # <QuerySet [<Post: post 1>]>
+
         return context
         # Maybe try
         # Content.objects.get(id=<int>).post_set.all()
