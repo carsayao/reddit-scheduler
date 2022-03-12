@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+1. [Overview](#overview)
 1. [Current](#current)
     1. [Quick Notes](#quicknotes)
 1. [Post Scheduler for Reddit](#post_scheduler)
@@ -21,6 +22,10 @@
     1. [Add to `scheduler`](#add_to_scheduler)
     1. [Add to `polls`](#add_to_polls)
 1. [Scratch](#scratch)
+
+# Overview <a name="overview"></a>
+
+This app is my way of learning and exploring webapps and RESTful APIs in Django. The idea is that you create "content" that can be cross-posted to other subreddits at specified times. 
 
 # Current <a name="current"></a>
 
