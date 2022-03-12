@@ -15,5 +15,5 @@ urlpatterns = [
 # /scheduler/3/
     path('<int:pk>/', views.ContentDetailView.as_view(), name='content-detail'),
     # path('<int:content>/<int:post>/', views.PostListView.as_view(), name='post-list'),
-    path('<int:content>/<int:post>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('<int:pk>/<int:post>/', views.PostDetailView.as_view(), name='post-detail'),
 ]

@@ -1,0 +1,19 @@
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+
+<h1>Post</h1>
+<h3>Title: {{ post.override_title }}</h3>
+<h3>User: {{ post.user }} </h3>
+<h3>Subreddit: {{ post.subreddit }} </h3>
+<h3>Strat: {{ post.strat }} </h3>
+<h3>Send Replies? {{ post.send_replies }} </h3>
+<h3>Flair: {{ post.flair }} </h3>
+<h3>Reddit Link: {{ post.reddit_link }} </h3>
+<h3>Comment: {{ post.comment }} </h3>
+<h3>Nsfw? {{ post.nsfw }} </h3>
+<h3>Strategy: {{ post.strategy }} </h3>
+<h3>Scheduled for: {{ post.scheduled_for }} </h3>
+<h3>Posted at: {{ post.posted_at }} </h3>
+
+{% endblock %}
