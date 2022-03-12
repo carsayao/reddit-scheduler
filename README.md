@@ -1,8 +1,10 @@
-# My Notes
+# Overview <a name="overview"></a>
+
+This app is my way of learning and exploring webapps and RESTful APIs in Django. The idea is that you create "content" that can be cross-posted to other subreddits at specified times. 
 
 ## Table of Contents
 
-1. [Overview](#overview)
+1. [My Notes](#mynotes)
 1. [Current](#current)
     1. [Quick Notes](#quicknotes)
 1. [Post Scheduler for Reddit](#post_scheduler)
@@ -23,9 +25,7 @@
     1. [Add to `polls`](#add_to_polls)
 1. [Scratch](#scratch)
 
-# Overview <a name="overview"></a>
-
-This app is my way of learning and exploring webapps and RESTful APIs in Django. The idea is that you create "content" that can be cross-posted to other subreddits at specified times. 
+# My Notes <a name="mynotes"></a>
 
 # Current <a name="current"></a>
 
@@ -76,6 +76,7 @@ https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
 - [x] Change model. Move `user` from `Content` to `Post`.
 - [ ] Create login/registration page.
+- [ ] When building Post Creation page, make sure Post.override_title inherits Content.default_title if blank.
 
 ## Steps to submit a post <a name="submit_a_post"></a>
 
