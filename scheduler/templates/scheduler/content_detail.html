@@ -8,11 +8,12 @@
 <h3>Creation date: {{ content.created_at }}</h3>
 <h3>Last Updated date: {{ content.updated_at }}</h3>
 <a href="{% url 'scheduler:content-update' content.id %}">Edit</a>
+<a href="{% url 'scheduler:content-delete' content.id %}">Delete</a>
 <h2>Posts:</h2>
 {% if post_list %}
     <ul>
     {% for post in post_list %}
-        <li><a href="{% url 'scheduler:post-detail' content.id post.id %}">{{ post.override_title }}</a></li>
+        <li><a href="{% url 'scheduler:post-detail' content.id post.id %}">{{ post.override_title }} {{ content.id }} {{ post.id }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

@@ -15,9 +15,14 @@ urlpatterns = [
 # /scheduler/new/
     path('content/new/', views.ContentCreateView.as_view(), name='content-add'),
 # /scheduler/edit/3/
-    path('content/edit/<int:pk>/', views.ContentUpdateView.as_view(), name='content-update'),
+    path('content/<int:pk>/edit/', views.ContentUpdateView.as_view(), name='content-update'),
+# /scheduler/3/delete/
+    path('content/<int:pk>/delete/', views.ContentDeleteView.as_view(), name='content-delete'),
 # /scheduler/3/
     path('content/<int:pk>/', views.ContentDetailView.as_view(), name='content-detail'),
     # path('<int:content>/<int:post>/', views.PostListView.as_view(), name='post-list'),
-    path('content/<int:pk>/<int:post>/', views.PostDetailView.as_view(), name='post-detail'),
+    # I don't know why I have to reverse this, but it works.
+    # Trying '<pk>/<post>/' gives me a backwards url and can't access all posts.
+    # Pay attention to order in content_detail.html as well.
+    path('content/<int:post>/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
 ]

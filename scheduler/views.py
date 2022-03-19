@@ -4,7 +4,7 @@ from django.http import Http404
 from django.http.response import HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -12,12 +12,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import ContentForm
 from .models import User, Content, Post
 
-# Commented out to route '' to 'content/' (content-list).
-# class IndexView(ListView):
-    # template_name = 'scheduler/index.html'
-    # context_object_name = 'content_list'
-    # def get_queryset(self):
-    #     return Content.objects.all()
 # Acts as a homepage
 # https://docs.djangoproject.com/en/3.2/topics/class-based-views/#subclassing-generic-views
 class IndexView(TemplateView):
@@ -36,17 +30,19 @@ class ContentCreateView(CreateView):
 class ContentUpdateView(UpdateView):
     model = Content
     form_class = ContentForm
-    # print('[!]', reverse('content-delete'))
 
-# class ContentDeleteView(DeleteView):
-    # model = Content
-    # success_url = reverse()
+class ContentDeleteView(DeleteView):
+    model = Content
+    # Need to use reverse_lazy() with success_url. If we are reversing inside a
+    # function we can use reverse().
+    success_url = reverse_lazy('scheduler:content-list')
 
 class ContentDetailView(DetailView):
     model = Content
     template_name = 'scheduler/content_detail.html'
     # https://docs.djangoproject.com/en/3.2/topics/class-based-views/generic-display/#adding-extra-context
     def get_context_data(self, **kwargs):
+        print("[!] self.kwargs['pk']", self.kwargs['pk'])   # Get pk of current content
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the posts
@@ -54,12 +50,13 @@ class ContentDetailView(DetailView):
 
         return context
 
-class PostListView(ListView):
-    template_name = 'scheduler/content_posts.html'
-    context_object_name = 'post_list'
-    def get_queryset(self):
-        self.content = get_object_or_404(Content, name=self.kwargs['content'])
-        return Post.objects.select_relate().filter(content=self.content)
+# class PostListView(ListView):
+#     template_name = 'scheduler/content_posts.html'
+#     context_object_name = 'post_list'
+#     def get_queryset(self):
+#         print("[!] self.kwargs['pk']", self.kwargs['pk'])   # Get pk of current content
+#         self.content = get_object_or_404(Content, name=self.kwargs['content'])
+#         return Post.objects.select_relate().filter(content=self.content)
 
 class PostDetailView(DetailView):
     model = Post

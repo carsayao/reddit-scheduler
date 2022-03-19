@@ -301,6 +301,45 @@ Printing context from within ContentDetailView.
 }
 ```
 
+Urlconf order notes:
+
+Urlconf is giving me issues with how it wants to display the url in regards to order of content/post. Below are the combinations I've tried.
+
+```
+content.id post.id
+with path
+'content/<int:pk>/<int:post>/'
+gives wrong
+expected url when clicking on post 3: 'content/2/3'
+actual: 'content/3/2', both 'content/3/2' and 'content/2/2' are same post id
+
+post.id content.id
+with path
+'content/<int:pk>/<int:post>/'
+gives right
+
+post=post.id pk=content.id
+with path
+'content/<int:pk>/<int:post>/'
+gives wrong
+same as top but now urls look fine 'content/2/2' 'content/2/3'
+
+post=content.id pk=post.id
+with path
+'content/<int:pk>/<int:post>/'
+gives wrong url 'content/3/2' but right post content
+
+post=content.id pk=post.id
+with path
+'content/<int:post>/<int:pk>/'
+gives right
+
+content.id post.id
+with path
+'content/<int:post>/<int:pk>/'
+gives right
+```
+
 Process data in the View to save to Model
 
 Where do I enter a post's schedule? Who keeps track of it? Where is the asynch task initiated and where does it finally post to reddit when the time comes?
