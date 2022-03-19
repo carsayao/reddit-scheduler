@@ -77,6 +77,9 @@ https://docs.djangoproject.com/en/3.2/topics/auth/default/
 - [x] Change model. Move `user` from `Content` to `Post`.
 - [ ] Create login/registration page.
 - [ ] When building Post Creation page, make sure Post.override_title inherits Content.default_title if blank.
+- [ ] Create Content page
+    - [x] Edit
+    - [ ] Delete
 - [ ] Create Post page
 
 ## Steps to submit a post <a name="submit_a_post"></a>
