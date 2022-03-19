@@ -8,14 +8,16 @@ from . import views
 app_name = 'scheduler'
 urlpatterns = [
 # /scheduler/
+    # Temporary index that routes '' to 'content/'
     path('', views.IndexView.as_view(), name='index'),
-    # path('content/', views.ContentView.as_view(), name='content'),
+    # path('', views.ContentListView.as_view(), name='index'),
+    path('content/', views.ContentListView.as_view(), name='content-list'),
 # /scheduler/new/
-    path('new/', views.ContentCreateView.as_view(), name='content-add'),
+    path('content/new/', views.ContentCreateView.as_view(), name='content-add'),
 # /scheduler/edit/3/
-    path('edit/<int:pk>/', views.ContentUpdateView.as_view(), name='content-update'),
+    path('content/edit/<int:pk>/', views.ContentUpdateView.as_view(), name='content-update'),
 # /scheduler/3/
-    path('<int:pk>/', views.ContentDetailView.as_view(), name='content-detail'),
+    path('content/<int:pk>/', views.ContentDetailView.as_view(), name='content-detail'),
     # path('<int:content>/<int:post>/', views.PostListView.as_view(), name='post-list'),
-    path('<int:pk>/<int:post>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('content/<int:pk>/<int:post>/', views.PostDetailView.as_view(), name='post-detail'),
 ]

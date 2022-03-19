@@ -6,14 +6,25 @@ from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .forms import ContentForm
 from .models import User, Content, Post
 
-class IndexView(ListView):
+# Commented out to route '' to 'content/' (content-list).
+# class IndexView(ListView):
+    # template_name = 'scheduler/index.html'
+    # context_object_name = 'content_list'
+    # def get_queryset(self):
+    #     return Content.objects.all()
+# Acts as a homepage
+# https://docs.djangoproject.com/en/3.2/topics/class-based-views/#subclassing-generic-views
+class IndexView(TemplateView):
     template_name = 'scheduler/index.html'
+
+class ContentListView(ListView):
+    template_name = 'scheduler/content.html'
     context_object_name = 'content_list'
     def get_queryset(self):
         return Content.objects.all()
@@ -22,15 +33,14 @@ class ContentCreateView(CreateView):
     model = Content
     form_class = ContentForm
 
-# class ContentView(DetailView):
-#     template_name = 'scheduler/content.html'
-#     context_object_name = 'content_list'
-#     def get_queryset(self):
-#         return Content.objects.all()
-
 class ContentUpdateView(UpdateView):
     model = Content
     form_class = ContentForm
+    # print('[!]', reverse('content-delete'))
+
+# class ContentDeleteView(DeleteView):
+    # model = Content
+    # success_url = reverse()
 
 class ContentDetailView(DetailView):
     model = Content

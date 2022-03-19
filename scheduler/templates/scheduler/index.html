@@ -2,15 +2,7 @@
 
 {% block content %}
 
-{% if content_list %}
-    <ul>
-    {% for content in content_list %}
-        <li><a href="{% url 'scheduler:content-detail' content.id %}">{{ content.default_title }} {{ content.user }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No content available.</p>
-{% endif %}
+<h1>Welcome</h1>
 
 
 {% endblock %}
