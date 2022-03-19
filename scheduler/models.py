@@ -29,7 +29,7 @@ class Content(models.Model):
     # Method to tell Django how to calculate the canonical URL for an object. 
     # https://docs.djangoproject.com/en/3.2/ref/models/instances/#django.db.models.Model.get_absolute_url
     def get_absolute_url(self):
-        return reverse('content-detail', kwargs={'pk': self.pk})
+        return reverse('scheduler:content-detail', kwargs={'pk': self.pk})
 
 class Post(models.Model):
     POST_STRATEGY = [

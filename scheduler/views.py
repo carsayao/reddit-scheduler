@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .forms import ContentForm
 from .models import User, Content, Post
@@ -27,6 +27,10 @@ class ContentCreateView(CreateView):
 #     context_object_name = 'content_list'
 #     def get_queryset(self):
 #         return Content.objects.all()
+
+class ContentUpdateView(UpdateView):
+    model = Content
+    form_class = ContentForm
 
 class ContentDetailView(DetailView):
     model = Content
